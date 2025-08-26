@@ -29,9 +29,10 @@ export const appConfig: ApplicationConfig = {
         provider: new ReCaptchaV3Provider(environment.reCAPTCHAV3Key.key),
         isTokenAutoRefreshEnabled: true,
       });
-      // if (location.hostname === 'localhost') {
-      //   self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
-      // }
+      if (location.hostname === 'localhost' ||
+          location.hostname.endsWith('.local')) {
+        self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+      }
       return appCheck;
     }),
     provideAuth(() => getAuth()),
