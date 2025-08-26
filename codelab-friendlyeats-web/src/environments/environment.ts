@@ -11,6 +11,6 @@ export const environment = {
     key: "6LcGT7IrAAAAAHNthehtPKBLGKM0kV2JmLfGMpui",
   },
   reCAPTCHAV3Key: {
-    key: "6Lcnj7IrAAAAAIYqcnTEtpUKGsHhRCnwKXM-Y2xR",
+    key: "6LeYbbMrAAAAAA-heULksFuEhuLW_75R60lkZGoz",
   }
 };
