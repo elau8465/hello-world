@@ -7,4 +7,7 @@ export const environment = {
     messagingSenderId: "249928011007",
     appId: "1:249928011007:web:c7a7665d610b2dfe0150ca"
   },
+  reCAPTCHAEnterpriseKey: {
+    key: "6LcGT7IrAAAAAHNthehtPKBLGKM0kV2JmLfGMpui",
+  },
 };
