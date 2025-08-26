@@ -18,6 +18,10 @@ export class ChatPageComponent {
   user$ = this.chatService.user$;
   text = '';
 
+  constructor() {
+    this.chatService.saveMessagingDeviceToken();
+  }
+
   sendTextMessage() {
     this.chatService.saveTextMessage(this.text);
     this.text = '';
