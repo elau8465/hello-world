@@ -39,6 +39,7 @@ import {
 } from '@angular/fire/storage';
 import { getToken, Messaging, onMessage } from '@angular/fire/messaging';
 import { Router } from '@angular/router';
+import { AppCheck } from '@angular/fire/app-check';
 
 type ChatMessage = {
   name: string | null,
@@ -59,6 +60,7 @@ export class ChatService {
   storage: Storage = inject(Storage);
   messaging: Messaging = inject(Messaging);
   router: Router = inject(Router);
+  appCheck: AppCheck = inject(AppCheck);
   private provider = new GoogleAuthProvider();
   LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif?a';
 
@@ -75,21 +77,23 @@ export class ChatService {
 
   // Login Friendly Chat.
   login() {
-      signInWithPopup(this.auth, this.provider).then((result) => {
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          this.router.navigate(['/', 'chat']);
-          return credential;
-      })
+    signInWithPopup(this.auth, this.provider).then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        this.router.navigate(['/', 'chat']);
+        return credential;
+    }).catch((error) => {
+      alert(error);
+    });
   }
 
   // Logout of Friendly Chat.
   logout() {
-      signOut(this.auth).then(() => {
-          this.router.navigate(['/', 'login'])
-          console.log('signed out');
-      }).catch((error) => {
-          console.log('sign out error: ' + error);
-      })
+    signOut(this.auth).then(() => {
+        this.router.navigate(['/', 'login'])
+        console.log('signed out');
+    }).catch((error) => {
+        console.log('sign out error: ' + error);
+    })
   }
 
   // Adds a text or image message to Cloud Firestore.
