@@ -19,7 +19,7 @@ export class ChatPageComponent {
   text = '';
 
   constructor() {
-    this.chatService.saveMessagingDeviceToken();
+    // this.chatService.saveMessagingDeviceToken();
   }
 
   sendTextMessage() {
