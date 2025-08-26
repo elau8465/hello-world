@@ -10,6 +10,7 @@ import { routes } from './app.routes';
 import { provideRouter } from '@angular/router';
 import {
   ReCaptchaEnterpriseProvider,
+  ReCaptchaV3Provider,
   initializeAppCheck,
   provideAppCheck,
 } from '@angular/fire/app-check';
@@ -24,12 +25,13 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAppCheck(() => {
       const appCheck = initializeAppCheck(getApp(), {
-        provider: new ReCaptchaEnterpriseProvider(environment.reCAPTCHAEnterpriseKey.key),
+        // provider: new ReCaptchaEnterpriseProvider(environment.reCAPTCHAEnterpriseKey.key),
+        provider: new ReCaptchaV3Provider(environment.reCAPTCHAV3Key.key),
         isTokenAutoRefreshEnabled: true,
       });
-      if (location.hostname === 'localhost') {
-        self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
-      }
+      // if (location.hostname === 'localhost') {
+      //   self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+      // }
       return appCheck;
     }),
     provideAuth(() => getAuth()),
